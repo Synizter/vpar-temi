@@ -4,7 +4,7 @@ test_serial = '01234'
 
 def on_connect(client, user_data, flag, rc):
     print("Client connected")
-    client.subscribe('temi/#'.format(test_serial))
+    client.subscribe('temi/{}'.format(test_serial))
     client.message_callback_add('test/', test)
 
 def on_message(client, user_data, msg):
@@ -20,7 +20,7 @@ host = 'babyai.org'
 usr = 'wifimod'
 psw = 'PeEFc9Ag'
 
-client = mqtt.Client("TESTUNIT_NANIWAKARANAI_ITAI")
+client = mqtt.Client("")
 
 client.on_connect = on_connect
 client.on_message = on_message

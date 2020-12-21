@@ -3,7 +3,7 @@ import json
 class Robot:
     def __init__(self, interface, temi_serial):
         self.__TAG = "TEMI-ACTION STATUS [{}] : {}"
-        self.interface = interface;
+        self.interface = interface
         self.__id = temi_serial
         self.__robot_action = {
             'action':"",
@@ -64,6 +64,7 @@ class Robot:
     
     def onTelepresenceEventChangeListener(self, client, user_data, msg):
         state = msg.payload.decode('utf-8')
+        print(msg)
         if(state == 'TYPE_INCOMING'):
             self.__robot_action['state'] = 'incomming'
         elif(state == 'TYPE_OUTGOING'):
@@ -77,12 +78,9 @@ class Robot:
     
     def onTtsStatusChangeListener(self, client, user_data, msg):
         state = msg.payload.decode('utf-8')
+        print(msg)
         if(state == 'COMPLETED'):
             self.__robot_action['state'] = 'done'
-        elif(state == 'PENDING'):
-            self.__robot_action['state'] = 'pending'
-        elif(state == 'PROCESSING'):
-            self.__robot_action['state'] = 'processing'
         elif(state == 'STARTED'):
             self.__robot_action['state'] = 'start'
         elif(state == 'ERROR'):

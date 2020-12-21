@@ -9,7 +9,11 @@ mqtt.connect()
 
 robot = temi.Robot(mqtt, temi_serial)
 
-robot.speak("Hello", "en");
+robot.speak("Hello", "en")
+robot.speak("How are you", "en")
 robot.goto("whiteboard")
-robot.call("man")
+robot.speak("Arrrived", "en")
+robot.speak("I will leave now", "en")
+robot.goto("home base")
+# robot.call("man")
 
